@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+<link rel="stylesheet" href="{% static 'school/style.css' %}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<form>
+<form method="POST">
+    {% csrf_token %}
     name: <input type="text" name="name" value={{room.name}}>
     <br>
-    capacity: <input type="number" value={{room.name}}>
+    capacity: <input type="number" value={{room.capacity}}>
     <br>
-    projector: <input type="checkbox" name="projector" value={{room.projector}}>
-    <input type="submit">
+    projector: <input type="checkbox" name="projector"
+                      {% if room.projector %} checked {% endif %}>
+    <input type="submit" value="change">
 </form>
 </body>
 </html>

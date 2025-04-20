@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+<link rel="stylesheet" href="{% static 'school/style.css' %}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<a href="/">strona glowna</a>
+<br>
 <form method="POST">
+    {% csrf_token %}
   name: <input type="text" name="name">
+
+  capacity: <input type="number" name="capacity">
   <br>
-  capacity: <input type="number">
-  <br>
-  projector: <input type="checkbox" name="projector">
+  projector: <input type="checkbox" name="projector" value="True">
   <input type="submit">
 </form>
-
+<br>
+{% if added %}dodano{% endif %}
 </body>
 </html>

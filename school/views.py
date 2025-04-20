@@ -18,12 +18,16 @@ def add_room(request):
     if request.method == 'GET':
         return render(request, 'add_room_form.html')
     else: #POST
-        return render(request, 'add_room_form.html')
+        name = request.POST.get('name')
+        cap = request.POST.get('capacity')
+        projector = request.POST.get('projector', False)
+        print('tu jestem')
+        print(projector)
+        room = Room.objects.create(name=name, capacity=cap, projector=projector)
+        return render(request, 'add_room_form.html',{'added':True})
 
-#TODO
-def edit_room(request):
-    print('a')
-    id = request.GET.get('id')
-    print(id)
+
+def edit_room(request, id):
     room = Room.objects.get(id=id)
     return render(request, 'edit_room.html',{'room': room})
+
