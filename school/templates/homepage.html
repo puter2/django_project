@@ -5,12 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-strona tytulowa
-<ul>
-    <li><a href="add_room">dodaj sale</a></li>
-    <li><a href="edit_room"> edytuj sale</a></li>
-</ul>
-<a href="add_room">dodaj sale</a>
+
+<table border="1">
+    <tr>
+        <td>name</td>
+        <td>capacity</td>
+        <td>projector</td>
+        <td>reserved</td>
+    </tr>
+    {% for room in rooms %}
+    <tr>
+        <td><a href="edit/{{room.id}}">{{room.name}}</a></td>
+        <td>{{room.capacity}}</td>
+        <td>{{room.projector}}</td>
+        <td>{% if room in reservations%} X {% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 </body>
 </html>
