@@ -17,14 +17,17 @@
     </tr>
     {% for room in rooms %}
     <tr>
-        <td>{{room.name}} <a href="edit/{{room.id}}" name="edytuj">⤤</a></td>
+        <td>{{room.name}} <a href="edit/{{room.id}}" title="edytuj">✎</a></td>
         <td>{{room.capacity}}</td>
         <td>{% if room.projector %} ✓ {% else %} ✘ {% endif %}</td>
         <td>{% if room in reservations%} X {% endif %}</td>
+        <td><a href="delete/{{room.id}}" title="usun sale">❌</a></td>
+        <td><a href="add_reservation/{{room.id}}" title="dodaj reserwacje">☏</a></td>
     </tr>
     {% endfor %}
 </table>
 <a href="add_room">dodaj sale</a>
+
 
 </body>
 </html>
